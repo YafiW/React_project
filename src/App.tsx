@@ -1,24 +1,26 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import UserList from './components/User-list/User-list';
+import Loadder from './components/Loadder/Loadder';
+import UserDetails from './components/User-details/User-details';
+import { Route, Routes } from 'react-router-dom';
+import FullUserDetailes from './components/FullUserDetailes/FullUserDetailes';
+import UserPosts from './components/UserPosts/UserPosts';
+import LogIn from './components/LogIn/LogIn';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Routes>
+        <Route path='' element={<LogIn></LogIn>}></Route>
+        <Route path='/user-detailes' element={<UserDetails AddUser={() => {
+          console.log("Ok")
+        }}></UserDetails>}></Route>
+        <Route path='/user-list' element={<UserList></UserList>}></Route>
+        <Route path='/full-user-detailes/:id' element={<FullUserDetailes></FullUserDetailes>} />
+        <Route path='/user-posts' element={<UserPosts></UserPosts>} />
+      </Routes>
     </div>
   );
 }
